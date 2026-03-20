@@ -26,7 +26,7 @@ export default function RoleSelect({ value, onChange }: RoleSelectProps) {
 
   return (
     <select value={value} onChange={(e) => onChange(e.target.value)}>
-      <option value="">Choose role</option>
+      <option value="">fggggggggggggg role</option>
 
       {roles.map((role) => (
         <option key={role.id} value={role.id}>
