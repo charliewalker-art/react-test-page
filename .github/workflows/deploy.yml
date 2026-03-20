@@ -1,0 +1,24 @@
+name: Deploiement Automatique React
+
+on:
+  push:
+    branches:
+      - main  # Le robot s'active quand tu pousses du code sur la branche "main"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recupérer le code 
+        uses: actions/checkout@v4
+
+      - name: Installer et Compiler 
+        run: |
+          npm install
+          npm run build
+
+      - name: Publier sur le web 
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # IMPORTANT : écris ./build si tu n'utilises pas Vite

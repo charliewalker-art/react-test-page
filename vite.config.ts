@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react'
 import UnoCSS from 'unocss/vite'
 
 export default defineConfig({
+  // AJOUTE CETTE LIGNE ICI :
+  base: '/react-test-page/', 
+
   plugins: [
     react(),
     UnoCSS(),
@@ -11,11 +14,14 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:8080",
+        target: "https://javion-bolometric-verdie.ngrok-free.dev",
         changeOrigin: true,
         secure: false,
+        // Ajoute ceci pour que le proxy envoie aussi le header
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
       },
     },
   },
-
 })
